@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartelera Letterboxd</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Cartelera de Películas</h1>
+    </div>
+
+    <div class="movie-grid">
+        <!-- Cada película -->
+        <div class="movie-card">
+            <img src="/PortadasPelis/FightClub.jfif" alt="Película 1" class="movie-poster">
+            <h2>Fight Club</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+        
+        <div class="movie-card">
+            <img src="/PortadasPelis/TrainSpotting.jpg" alt="Película 2" class="movie-poster">
+            <h2>TrainSpotting</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+
+        <div class="movie-card">
+            <img src="/PortadasPelis/american_history_x.jpg" alt="Película 3" class="movie-poster">
+            <h2>American History X</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+        <div class="movie-card">
+            <img src="/PortadasPelis/Her.jpg" alt="Película 3" class="movie-poster">
+            <h2>Her</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/200x300" alt="Película 3" class="movie-poster">
+            <h2>Película 5</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+        <div class="movie-card">
+            <img src="https://via.placeholder.com/200x300" alt="Película 3" class="movie-poster">
+            <h2>Película 6</h2>
+            <button class="like-btn" onclick="addLike(this)">❤️ <span class="like-count">0</span></button>
+        </div>
+        
+    </div>
+
+    <script>
+        function addLike(button) {
+            let likeCount = button.querySelector('.like-count');
+            let count = parseInt(likeCount.textContent);
+            likeCount.textContent = count + 1;
+        }
+    </script>
+</body>
+</html>
