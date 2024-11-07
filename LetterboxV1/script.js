@@ -7,15 +7,15 @@ const API_KEY = "42fe1355";
 
 // Forzar que al cargar la página, siempre se cargue en modo claro
 document.body.classList.add("light-mode");
-toggleModeBtn.textContent = "Cambiar a Modo Oscuro";
+toggleModeBtn.textContent = "Modo Oscuro";
 
 // Función para cambiar entre modos
 toggleModeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
   document.body.classList.toggle("light-mode");
   toggleModeBtn.textContent = document.body.classList.contains("dark-mode")
-    ? "Cambiar a Modo Claro"
-    : "Cambiar a Modo Oscuro";
+    ? "Modo Claro"
+    : "Modo Oscuro";
 });
 
 // Mostrar/ocultar el formulario de añadir película
@@ -24,7 +24,7 @@ document.getElementById("toggle-form-btn").addEventListener("click", () => {
   addMovieFormContainer.style.display = isVisible ? "none" : "block";
   document.getElementById("toggle-form-btn").textContent = isVisible
     ? "Añadir Película"
-    : "(X)";
+    : "(X) ";
 });
 
 // Función para obtener datos de película de OMDb
