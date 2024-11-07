@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Letterboxd</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Botón para cambiar de modo oscuro/claro -->
+    <button id="toggle-mode-btn">Cambiar Modo</button>
+
+    <div class="container">
+      <h1>MOVIEDB</h1>
+
+      <!-- Botón para mostrar/ocultar formulario de añadir película -->
+      <button id="toggle-form-btn">Añadir Película</button>
+
+      <!-- Formulario de añadir película, inicialmente oculto -->
+      <div id="add-movie-form-container" style="display: none">
+        <form id="add-movie-form">
+          <input
+            type="text"
+            id="movie-title"
+            placeholder="Título de la película"
+            required
+          />
+          <input
+            type="number"
+            id="movie-rating"
+            placeholder="Puntuación (1-10)"
+            min="1"
+            max="10"
+            required
+          />
+          <textarea
+            id="movie-review"
+            placeholder="Comentario sobre la película"
+            required
+          ></textarea>
+          <button type="submit">Añadir Película</button>
+        </form>
+      </div>
+
+      <!-- Barra de búsqueda -->
+      <input type="text" id="search-bar" placeholder="Buscar película..." />
+
+      <!-- Lista de películas -->
+      <div id="movie-list" class="movie-list"></div>
+
+      <!-- Modal de detalles de la película -->
+<div id="movie-details-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal-btn">&times;</span>
+        <h3 id="movie-detail-title"></h3>
+        <p id="movie-detail-synopsis"></p>
+        <p id="movie-detail-actors"></p>
+        <p id="movie-detail-director"></p>
+    </div>
+</div>
+
+
+    
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

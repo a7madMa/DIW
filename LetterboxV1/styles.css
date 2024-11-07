@@ -1,0 +1,283 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Color suave de fondo */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Botón de modo oscuro/claro */
+#toggle-mode-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #82c0cc; /* Suave color pastel */
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#toggle-mode-btn:hover {
+    background-color: #5a9aa9;
+}
+
+/* Estilos para el modo claro */
+body.light-mode {
+    background-color: #f0f4f8; /* Fondo claro */
+    color: #333;
+}
+
+.container.light-mode {
+    background-color: #ffffff;
+}
+
+.movie.light-mode {
+    background-color: #ffffff;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+    background-color: #333; /* Fondo oscuro */
+    color: #f0f4f8; /* Texto claro */
+}
+
+.container.dark-mode {
+    background-color: #444; /* Fondo oscuro para contenedor */
+}
+
+.movie.dark-mode {
+    background-color: #555; /* Fondo oscuro para tarjetas de película */
+}
+
+#toggle-mode-btn {
+    background-color: #333; /* Fondo oscuro para botón */
+    color: #fff;
+}
+
+#toggle-mode-btn:hover {
+    background-color: #555;
+}
+
+button {
+    background-color: #444; /* Fondo oscuro para botones */
+    color: #fff;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+.favorite-btn {
+    background-color: #555; /* Fondo oscuro para botón de favoritos */
+    color: #fff;
+}
+
+.favorite-btn.favorite {
+    background-color: #ff8a80;
+    color: #fff;
+}
+
+.edit-btn {
+    background-color: #fbc02d;
+    color: #333;
+}
+
+.edit-btn:hover {
+    background-color: #f9a825;
+}
+
+
+/* Contenedor principal */
+.container {
+    max-width: 700px;
+    width: 100%;
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #ffffff; /* Fondo blanco para contraste suave */
+    border-radius: 25px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.2em;
+    text-align: center;
+    color: #82c0cc; /* Color pastel */
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+input, textarea {
+    background-color: #f8fafc; /* Fondo claro */
+    border: none;
+    color: #333;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+input::placeholder, textarea::placeholder {
+    color: #bbb;
+}
+
+button {
+    padding: 12px;
+    background-color: #82c0cc;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #5a9aa9;
+}
+
+/* Listado de películas */
+#movie-list {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Espacio adecuado entre las películas */
+    gap: 20px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* Tarjeta de película */
+.movie {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.movie img.movie-poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-info {
+    text-align: center;
+    padding: 10px;
+}
+
+.movie h3 {
+    color: #82c0cc; /* Color pastel */
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.movie p {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+}
+
+/* Botones */
+button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    background-color: #82c0cc;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5a9aa9;
+}
+
+/* Botón de favoritos */
+.favorite-btn {
+    background-color: #e0e7ea;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.favorite-btn:hover {
+    background-color: #c8d5d8;
+}
+
+.favorite-btn.favorite {
+    background-color: #ff8a80;
+    color: #fff;
+}
+
+/* Botón de editar */
+.edit-btn {
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #fbc02d;
+}
+
+.edit-btn:active {
+    background-color: #f9a825;
+}
+
