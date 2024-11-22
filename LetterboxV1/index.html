@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Letterboxd</title>
+    <title>Letterboxd</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -13,11 +13,19 @@
     <div class="container">
       <h1>MOVIES DB</h1>
 
+      <!-- Campo de búsqueda -->
+      <input
+        type="text"
+        id="search-bar"
+        placeholder="Buscar por título"
+        style="margin-bottom: 20px; width: 100%; padding: 10px; border-radius: 5px;"
+      />
+
       <!-- Botón para mostrar/ocultar formulario de añadir película -->
       <button id="toggle-form-btn">Añadir Película</button>
 
       <!-- Formulario de añadir película, inicialmente oculto -->
-      <div id="add-movie-form-container" style="display: none">
+      <div id="add-movie-form-container" style="display: none;">
         <form id="add-movie-form">
           <input
             type="text"
@@ -42,16 +50,17 @@
         </form>
       </div>
 
-      <!-- Barra de búsqueda -->
-      <input type="text" id="search-bar" placeholder="Buscar película..." />
-
       <!-- Lista de películas -->
       <div id="movie-list" class="movie-list"></div>
 
       <!-- Modal de detalles de la película -->
-      <div id="movie-details-modal" class="modal">
+      <div id="movie-details-modal" class="modal" style="display: none;">
         <div class="modal-content">
-          <span id="close-modal-btn">&times;</span>
+          <span id="close-modal-btn" style="cursor: pointer;">Cerrar</span>
+          <h2 id="movie-detail-title"></h2>
+          <p id="movie-detail-synopsis"></p>
+          <p id="movie-detail-actors"></p>
+          <p id="movie-detail-director"></p>
         </div>
       </div>
     </div>

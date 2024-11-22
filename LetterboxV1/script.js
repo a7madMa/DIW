@@ -1,22 +1,5 @@
-// Alternar entre modo oscuro y claro
-const toggleModeBtn = document.getElementById("toggle-mode-btn");
-const addMovieFormContainer = document.getElementById(
-  "add-movie-form-container"
-);
+const addMovieFormContainer = document.getElementById("add-movie-form-container");
 const API_KEY = "42fe1355";
-
-// Forzar que al cargar la página, siempre se cargue en modo claro
-document.body.classList.add("light-mode");
-toggleModeBtn.textContent = "Modo Oscuro";
-
-// Función para cambiar entre modos
-toggleModeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-  document.body.classList.toggle("light-mode");
-  toggleModeBtn.textContent = document.body.classList.contains("dark-mode")
-    ? "Modo Claro"
-    : "Modo Oscuro";
-});
 
 // Mostrar/ocultar el formulario de añadir película
 document.getElementById("toggle-form-btn").addEventListener("click", () => {
@@ -24,7 +7,7 @@ document.getElementById("toggle-form-btn").addEventListener("click", () => {
   addMovieFormContainer.style.display = isVisible ? "none" : "block";
   document.getElementById("toggle-form-btn").textContent = isVisible
     ? "Añadir Película"
-    : "(X) ";
+    : "(X)";
 });
 
 // Función para obtener datos de película de OMDb
@@ -36,36 +19,53 @@ async function fetchMovieData(title) {
 }
 
 // Manejar el formulario de añadir película
-document
-  .getElementById("add-movie-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
-    const { value: title } = document.getElementById("movie-title");
-    const { value: rating } = document.getElementById("movie-rating");
-    const { value: review } = document.getElementById("movie-review");
+document.getElementById("add-movie-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    const movieData = await fetchMovieData(title);
-    const movie = {
-      title,
-      rating,
-      review,
-      posterUrl:
-        movieData.Poster !== "N/A" ? movieData.Poster : "placeholder.png",
-    };
+  // Obtener los valores del formulario
+  const title = document.getElementById("movie-title").value.trim();
+  const rating = document.getElementById("movie-rating").value.trim();
+  const review = document.getElementById("movie-review").value.trim();
 
-    const movies = JSON.parse(localStorage.getItem("movies")) || [];
-    movies.push(movie);
-    localStorage.setItem("movies", JSON.stringify(movies));
+  if (!title || !rating || !review) {
+    alert("Por favor, completa todos los campos.");
+    return;
+  }
 
-    displayMovie(movie);
-    document.getElementById("add-movie-form").reset();
-  });
+  // Obtener la lista de películas desde localStorage
+  const movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+  // Validar si la película ya existe
+  const movieExists = movies.some((movie) => movie.title.toLowerCase() === title.toLowerCase());
+  if (movieExists) {
+    alert("La película ya ha sido añadida previamente.");
+    return;
+  }
+
+  // Obtener datos de la película desde OMDb
+  const movieData = await fetchMovieData(title);
+  const movie = {
+    title,
+    rating,
+    review,
+    posterUrl: movieData.Poster !== "N/A" ? movieData.Poster : "placeholder.png",
+  };
+
+  // Guardar la película en localStorage
+  movies.unshift(movie); // Agregar al inicio de la lista
+  localStorage.setItem("movies", JSON.stringify(movies));
+
+  // Mostrar la película y limpiar el formulario
+  displayMovie(movie);
+  document.getElementById("add-movie-form").reset();
+});
 
 // Mostrar todas las películas guardadas
 function displayMovies() {
   const movies = JSON.parse(localStorage.getItem("movies")) || [];
   movies.forEach(displayMovie);
 }
+
 // Mostrar una película individual
 function displayMovie(movie) {
   const movieDiv = document.createElement("div");
@@ -82,66 +82,29 @@ function displayMovie(movie) {
         </div>
     `;
 
-  // Función para mostrar detalles de la película en el modal
-  movieDiv.querySelector(".movie-info").addEventListener("click", () => {
-    const movieDetail = movie; // Obtener el detalle de la película
-    document.getElementById("movie-detail-title").textContent =
-      movieDetail.title;
-    document.getElementById("movie-detail-synopsis").textContent =
-      movieDetail.synopsis;
-    document.getElementById("movie-detail-actors").textContent =
-      "Actores: " + movieDetail.actors;
-    document.getElementById("movie-detail-director").textContent =
-      "Director: " + movieDetail.director;
-
-    document.getElementById("movie-details-modal").style.display = "block";
-  });
-
-  // Cerrar el modal
-  document.getElementById("close-modal-btn").addEventListener("click", () => {
-    document.getElementById("movie-details-modal").style.display = "none";
-  });
-
   // Lógica de favorito
-  movieDiv
-    .querySelector(".favorite-btn")
-    .addEventListener("click", function () {
-      this.classList.toggle("favorite");
-      this.textContent = this.classList.contains("favorite")
-        ? "<3"
-        : "Añadir a Favoritos";
-    });
+  movieDiv.querySelector(".favorite-btn").addEventListener("click", function () {
+    this.classList.toggle("favorite");
+    this.textContent = this.classList.contains("favorite") ? "<3" : "Añadir a Favoritos";
+  });
 
   // Lógica para borrar la película
   movieDiv.querySelector(".delete-btn").addEventListener("click", () => {
-    // Eliminar de la interfaz
     movieDiv.remove();
 
     // Eliminar de localStorage
     let movies = JSON.parse(localStorage.getItem("movies")) || [];
-
-    // Filtrar la película que debe eliminarse
     movies = movies.filter((m) => m.title !== movie.title);
-
-    // Guardar nuevamente la lista actualizada en localStorage
     localStorage.setItem("movies", JSON.stringify(movies));
   });
 
+  // Insertar al principio de la lista
   const movieList = document.getElementById("movie-list");
-  movieList.insertBefore(movieDiv, movieList.firstChild); // Inserta la película al principio de la lista
-}
-
-// Cargar todas las películas al inicio
-function displayMovies() {
-  let movies = JSON.parse(localStorage.getItem("movies")) || [];
-
-  movies.forEach((movie) => {
-    displayMovie(movie);
-  });
+  movieList.insertBefore(movieDiv, movieList.firstChild);
 }
 
 // Buscar películas por título
-document.getElementById("search-bar").addEventListener("input", (event) => {
+document.getElementById("search-bar")?.addEventListener("input", (event) => {
   const searchTerm = event.target.value.toLowerCase();
   filterMovies(searchTerm);
 });
@@ -159,10 +122,5 @@ function filterMovies(searchTerm) {
   filteredMovies.forEach(displayMovie); // Mostrar películas filtradas
 }
 
-// Mostrar todas las películas al cargar
-function displayMovies() {
-  const movies = JSON.parse(localStorage.getItem("movies")) || [];
-  movies.forEach(displayMovie);
-}
-
+// Cargar todas las películas al inicio
 window.addEventListener("load", displayMovies);

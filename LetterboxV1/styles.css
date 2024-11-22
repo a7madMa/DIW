@@ -6,12 +6,11 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8; /* Color suave de fondo */
-    color: #333;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #121212, #1d1d1d);
+    color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
     padding: 20px;
 }
@@ -21,263 +20,189 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9em;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.95em;
     color: #fff;
-    background-color: #82c0cc; /* Suave color pastel */
+    background-color: #0078d7;
     cursor: pointer;
     z-index: 1000;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 #toggle-mode-btn:hover {
-    background-color: #5a9aa9;
-}
-
-/* Estilos para el modo claro */
-body.light-mode {
-    background-color: #f0f4f8; /* Fondo claro */
-    color: #333;
-}
-
-.container.light-mode {
-    background-color: #ffffff;
-}
-
-.movie.light-mode {
-    background-color: #ffffff;
-}
-
-/* Estilos para el modo oscuro */
-body.dark-mode {
-    background-color: #333; /* Fondo oscuro */
-    color: #f0f4f8; /* Texto claro */
-}
-
-.container.dark-mode {
-    background-color: #444; /* Fondo oscuro para contenedor */
-}
-
-.movie.dark-mode {
-    background-color: #555; /* Fondo oscuro para tarjetas de película */
-}
-
-#toggle-mode-btn {
-    background-color: #333; /* Fondo oscuro para botón */
-    color: #fff;
-}
-
-#toggle-mode-btn:hover {
-    background-color: #555;
-}
-
-button {
-    background-color: #444; /* Fondo oscuro para botones */
-    color: #fff;
-}
-
-button:hover {
-    background-color: #666;
-}
-
-.favorite-btn {
-    background-color: #555; /* Fondo oscuro para botón de favoritos */
-    color: #fff;
-}
-
-.favorite-btn.favorite {
-    background-color: #ff8a80;
-    color: #fff;
-}
-
-.edit-btn {
-    background-color: #fbc02d;
-    color: #333;
-}
-
-.edit-btn:hover {
-    background-color: #f9a825;
-}
-
-
-/* Contenedor principal */
-.container {
-    max-width: 700px;
-    width: 100%;
-    margin-top: 40px;
-    padding: 30px;
-    background-color: #ffffff; /* Fondo blanco para contraste suave */
-    border-radius: 25px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    background-color: #005fb8;
 }
 
 /* Título principal */
 h1 {
-    font-size: 2.2em;
+    font-size: 2.5em;
     text-align: center;
-    color: #82c0cc; /* Color pastel */
-    margin-bottom: 25px;
-    font-weight: bold;
-}
-
-/* Formulario */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    color: #0078d7;
     margin-bottom: 30px;
-}
-
-input, textarea {
-    background-color: #f8fafc; /* Fondo claro */
-    border: none;
-    color: #333;
-    padding: 15px;
-    border-radius: 20px;
-    font-size: 1em;
-    outline: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-input::placeholder, textarea::placeholder {
-    color: #bbb;
-}
-
-button {
-    padding: 12px;
-    background-color: #82c0cc;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    font-size: 1em;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #5a9aa9;
-}
-
-/* Listado de películas */
-#movie-list {
-    padding-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Espacio adecuado entre las películas */
-    gap: 20px;
-    width: 100%;
-    margin-top: 40px;
-}
-
-/* Tarjeta de película */
-.movie {
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.movie:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.movie img.movie-poster {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.movie-info {
-    text-align: center;
-    padding: 10px;
-}
-
-.movie h3 {
-    color: #82c0cc; /* Color pastel */
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.movie p {
-    font-size: 1em;
-    color: #666;
-    margin: 0;
+    text-shadow: 0px 2px 10px rgba(0, 120, 215, 0.6);
 }
 
 /* Botones */
 button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    background-color: #82c0cc;
+    padding: 12px 20px;
+    background-color: #0078d7;
     color: #fff;
     border: none;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: bold;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-    background-color: #5a9aa9;
+    background-color: #005fb8;
 }
 
-/* Botón de favoritos */
+/* Formulario */
+#add-movie-form-container {
+    display: none;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input,
+textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #0078d7;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #00b8ff;
+    box-shadow: 0px 3px 8px rgba(0, 184, 255, 0.6);
+}
+
+/* Lista de películas */
+#movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Columnas ajustables */
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Tarjeta de película */
+.movie {
+    background: linear-gradient(to bottom, #1c1c1c, #292929);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.movie:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Información de la película */
+.movie h3 {
+    font-size: 1.5em;
+    color: #0078d7;
+    margin-bottom: 10px;
+    text-shadow: 0px 2px 8px rgba(0, 120, 215, 0.5);
+}
+
+.movie p {
+    font-size: 1em;
+    margin: 5px 0;
+    color: #ddd;
+}
+
+/* Imagen de la película */
+.movie img.movie-poster {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Botones dentro de cada película */
+.movie .actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
 .favorite-btn {
-    background-color: #e0e7ea;
-    color: #333;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9em;
+    background-color: #ff8a80;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 0.85em;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .favorite-btn:hover {
-    background-color: #c8d5d8;
+    background-color: #e57373;
 }
 
-.favorite-btn.favorite {
-    background-color: #ff8a80;
+.delete-btn {
+    background-color: #d32f2f;
     color: #fff;
-}
-
-/* Botón de editar */
-.edit-btn {
-    background-color: #ffeb3b;
-    color: #333;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    font-size: 0.9em;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 0.85em;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.edit-btn:hover {
-    background-color: #fbc02d;
+.delete-btn:hover {
+    background-color: #b71c1c;
 }
 
-.edit-btn:active {
-    background-color: #f9a825;
-}
+/* Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
 
+    #toggle-mode-btn {
+        font-size: 0.85em;
+    }
+
+    #movie-list {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .movie h3 {
+        font-size: 1.2em;
+    }
+
+    .movie p {
+        font-size: 0.9em;
+    }
+}
