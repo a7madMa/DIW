@@ -1,13 +1,40 @@
 const addMovieFormContainer = document.getElementById("add-movie-form-container");
 const API_KEY = "42fe1355";
 
+// Selecciona el botón y el cuerpo del documento
+const toggleModeBtn = document.getElementById("toggle-mode-btn");
+const body = document.body;
+
+// Almacena el estado actual en localStorage (si existe)
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light-mode");
+  toggleModeBtn.textContent = "Modo Oscuro 🌙";
+}
+
+// Función para alternar entre modos
+toggleModeBtn.addEventListener("click", () => {
+  body.classList.toggle("light-mode");
+
+  // Cambiar texto del botón
+  if (body.classList.contains("light-mode")) {
+    toggleModeBtn.textContent = "Modo Oscuro 🌙";
+    localStorage.setItem("theme", "light"); // Guardar tema en localStorage
+  } else {
+    toggleModeBtn.textContent = "Modo Claro ☀️";
+    localStorage.setItem("theme", "dark"); // Guardar tema en localStorage
+  }
+});
+
+
+
+
 // Mostrar/ocultar el formulario de añadir película
 document.getElementById("toggle-form-btn").addEventListener("click", () => {
   const isVisible = addMovieFormContainer.style.display === "block";
   addMovieFormContainer.style.display = isVisible ? "none" : "block";
   document.getElementById("toggle-form-btn").textContent = isVisible
-    ? "Añadir Película"
-    : "(X)";
+    ? "Añadir Película 🎥"
+    : "❌";
 });
 
 // Función para obtener datos de película de OMDb

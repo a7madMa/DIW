@@ -33,6 +33,29 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Modo claro */
+body.light-mode {
+    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
+    color: #000;
+}
+
+body.light-mode h1 {
+    color: #005fb8;
+    text-shadow: none;
+}
+
+body.light-mode button {
+    background-color: #005fb8;
+    color: #fff;
+}
+
+body.light-mode input,
+body.light-mode textarea {
+    background-color: #fff;
+    border: 1px solid #005fb8;
+    color: #000;
+}
+
 #toggle-mode-btn:hover {
     background-color: #005fb8;
 }
