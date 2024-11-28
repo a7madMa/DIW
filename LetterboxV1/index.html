@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- Meta información básica -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Letterboxd</title>
+
+    <!-- Fuente externa para diseño unificado -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Hoja de estilos para diseño visual -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Botón para cambiar de modo oscuro/claro -->
-    <button id="toggle-mode-btn">Cambiar Modo</button>
+    <!-- Botón de cambio de modo oscuro/claro -->
+    <!-- Este botón permite alternar entre el modo claro y oscuro para mejorar la experiencia visual -->
+    <button id="toggle-mode-btn" aria-label="Cambiar entre modo claro y oscuro">
+      Modo Claro ☀️
+    </button>
 
     <div class="container">
+      <!-- Título principal del sitio web -->
       <h1>MOVIES DB</h1>
 
       <!-- Campo de búsqueda -->
+      <!-- Permite al usuario buscar películas por título -->
       <input
         type="text"
         id="search-bar"
         placeholder="Buscar por título"
-        style="margin-bottom: 20px; width: 100%; padding: 10px; border-radius: 5px;"
+        aria-label="Buscar películas"
+        style="
+          margin-bottom: 20px;
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+        "
       />
 
-      <!-- Botón para mostrar/ocultar formulario de añadir película -->
+      <!-- Botón para mostrar u ocultar el formulario de añadir película -->
       <button id="toggle-form-btn">Añadir Película 🎥</button>
 
-      <!-- Formulario de añadir película, inicialmente oculto -->
-      <div id="add-movie-form-container" style="display: none;">
+      <!-- Formulario de añadir película -->
+      <!-- Inicialmente oculto; se muestra al hacer clic en el botón anterior -->
+      <div id="add-movie-form-container" style="display: none">
         <form id="add-movie-form">
+          <!-- Campo para ingresar el título de la película -->
           <input
             type="text"
             id="movie-title"
             placeholder="Título de la película"
             required
           />
+          <!-- Campo para ingresar la puntuación de la película -->
           <input
             type="number"
             id="movie-rating"
@@ -41,22 +64,27 @@
             max="10"
             required
           />
+          <!-- Campo para ingresar un comentario sobre la película -->
           <textarea
             id="movie-review"
             placeholder="Comentario sobre la película"
             required
           ></textarea>
+          <!-- Botón para enviar y guardar los datos de la película -->
           <button type="submit">Añadir Película 🎬</button>
         </form>
       </div>
 
       <!-- Lista de películas -->
+      <!-- Aquí se mostrarán todas las películas añadidas por el usuario -->
       <div id="movie-list" class="movie-list"></div>
 
-      <!-- Modal de detalles de la película -->
-      <div id="movie-details-modal" class="modal" style="display: none;">
+      <!-- Modal para mostrar detalles de una película seleccionada -->
+      <div id="movie-details-modal" class="modal" style="display: none">
         <div class="modal-content">
-          <span id="close-modal-btn" style="cursor: pointer;">Cerrar</span>
+          <!-- Botón para cerrar el modal -->
+          <span id="close-modal-btn" style="cursor: pointer">Cerrar</span>
+          <!-- Secciones dinámicas que muestran información de la película -->
           <h2 id="movie-detail-title"></h2>
           <p id="movie-detail-synopsis"></p>
           <p id="movie-detail-actors"></p>
@@ -65,6 +93,8 @@
       </div>
     </div>
 
+    
+    <!-- Enlace al archivo JavaScript donde se maneja la lógica del proyecto -->
     <script src="script.js"></script>
   </body>
 </html>
